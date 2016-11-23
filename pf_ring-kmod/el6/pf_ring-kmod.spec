@@ -3,10 +3,10 @@
 
 ### BEWARE: The kernel version is also mentioned in kmodtool !
 # If kversion isn't defined on the rpmbuild line, define it here.
-%{!?kversion:%define kversion 2.6.32-504.el6.%{_target_cpu}}
+%{!?kversion:%define kversion 2.6.32-642.11.1.el6.%{_target_cpu}}
 
 Name:           %{kmod_name}-kmod
-Version:        6.0.2
+Version:        6.4.1
 Release:        1%{?dist}
 Group:          System Environment/Kernel
 License:        GPLv2
@@ -17,7 +17,7 @@ BuildRequires:  redhat-rpm-config
 ExclusiveArch:  i686 x86_64
 
 # Sources.
-Source0:   http://sourceforge.net/projects/ntop/files/PF_RING/PF_RING-%{version}.tar.gz
+Source0:   http://sourceforge.net/project/ntop/PF_RING/PF_RING-%{version}.tar.gz
 Source5:   GPL-v2.0.txt
 Source10:  kmodtool-%{kmod_name}-el6.sh
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-build-%(%{__id_u} -n)
@@ -63,5 +63,7 @@ find %{buildroot} -type f -name \*.ko -exec %{__chmod} u+x \{\} \;
 %{__rm} -rf %{buildroot}
 
 %changelog
+* Wed Nov 23 2016 Jakov Sosic <jsosic@gmail.com> - 0:6.4.1-1
+- bump to 6.4.1
 * Mon Apr  6 2015 Jakov Sosic <jsosic@gmail.com> - 0:6.0.2-1
 - Initial kmod package
